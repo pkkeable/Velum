@@ -1,0 +1,41 @@
+{
+  "spokeo": {
+    "name": "Spokeo",
+    "adapter": "mock-only",
+    "checked_on": "2026-10-07",
+    "official_reference": "https://help.spokeo.com/hc/en-us/articles/115010425928-How-do-I-remove-my-information-from-Spokeo-",
+    "official_entry": "https://www.spokeo.com/optout",
+    "research_status": "Official pages attempted; security challenge. Current method and required fields UNKNOWN.",
+    "required_information": "UNKNOWN until the official instructions can be reviewed manually. Mock fields are illustrative.",
+    "method": "UNKNOWN live; illustrative manual web-form handoff in this demo",
+    "limitation": "No live destination verification, submission or processing time is established.",
+    "mock_destination": "https://spokeo.example.invalid/fictional-removal",
+    "mock_method": "simulated web-form handoff"
+  },
+  "beenverified": {
+    "name": "BeenVerified",
+    "adapter": "mock-only",
+    "checked_on": "2026-10-07",
+    "official_reference": "https://www.beenverified.com/faq/opt-out/",
+    "official_entry": "https://www.beenverified.com/faq/opt-out/",
+    "research_status": "Official page attempted; security challenge. Current method and required fields UNKNOWN.",
+    "required_information": "UNKNOWN until the official instructions can be reviewed manually. Mock fields are illustrative.",
+    "method": "UNKNOWN live; illustrative manual web-form handoff in this demo",
+    "limitation": "No live destination verification, submission or processing time is established.",
+    "mock_destination": "https://beenverified.example.invalid/fictional-removal",
+    "mock_method": "simulated web-form handoff"
+  },
+  "acxiom": {
+    "name": "Acxiom",
+    "adapter": "mock-only, manual fallback",
+    "checked_on": "2026-10-07",
+    "official_reference": "https://www.acxiom.com/optout/",
+    "official_entry": "https://www.acxiom.com/optout/",
+    "research_status": "Official explanatory page read. Linked form not exercised; complete form field list UNKNOWN.",
+    "required_information": "Online US opt-out requires a valid email and confirmation. Additional form fields were not verified.",
+    "method": "Official page offers online opt-out, phone and postal routes; the user must handle them directly.",
+    "limitation": "Opt-out is distinct from Right to Delete. The page excludes data already supplied to marketers from this opt-out's effect. No public listing lookup was verified.",
+    "mock_destination": "https://acxiom.example.invalid/fictional-optout",
+    "mock_method": "simulated manual handoff only"
+  }
+}

@@ -1,0 +1,5 @@
+include AGENTS.md CONTRIBUTING.md SECURITY.md LICENSE Makefile
+include requirements-private.lock requirements-private-linux.lock requirements-build.lock
+recursive-include docs *.md
+recursive-include scripts *.py
+recursive-include tests *.py *.cjs

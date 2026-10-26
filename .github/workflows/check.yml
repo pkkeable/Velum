@@ -1,0 +1,87 @@
+name: Synthetic local checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  offline:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ['3.9', '3.13']
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m scripts.run_tests
+      - run: python -m scripts.demo
+      - run: python -m scripts.check_public_tree --history
+      - run: python -m scripts.check_release
+      - run: node --check privacy_cleanup/static/app.js
+      - run: node --check privacy_cleanup/static/private.js
+      - run: node --test tests/private_ui.test.cjs
+  encrypted-storage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.12'
+      - run: >-
+          python -m pip install --require-hashes --only-binary=:all: -r requirements-private-linux.lock
+      - run: python -m scripts.run_tests --require-private
+      - run: python -m scripts.check_public_tree --history
+  gitleaks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Install checksum-pinned Gitleaks
+        shell: bash
+        run: |
+          curl --fail --location --silent --show-error https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_x64.tar.gz -o "$RUNNER_TEMP/gitleaks.tar.gz"
+          echo "551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb  $RUNNER_TEMP/gitleaks.tar.gz" | sha256sum --check
+          tar -xzf "$RUNNER_TEMP/gitleaks.tar.gz" -C "$RUNNER_TEMP" gitleaks
+      - name: Scan all reachable history and current files
+        run: |
+          "$RUNNER_TEMP/gitleaks" git --redact --no-banner --log-opts=--all .
+          "$RUNNER_TEMP/gitleaks" dir --redact --no-banner .
+  distribution:
+    runs-on: ubuntu-latest
+    env:
+      SOURCE_DATE_EPOCH: '1792972800'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.12'
+      - run: >-
+          python -m pip install --require-hashes --only-binary=:all: -r requirements-build.lock
+      - name: Build twice and install outside the source checkout
+        shell: bash
+        run: |
+          mkdir "$RUNNER_TEMP/source" "$RUNNER_TEMP/rebuild" "$RUNNER_TEMP/dist" "$RUNNER_TEMP/dist-rebuilt"
+          git archive HEAD | tar -x -C "$RUNNER_TEMP/source"
+          python -m build --no-isolation --outdir "$RUNNER_TEMP/dist" "$RUNNER_TEMP/source"
+          tar -xzf "$RUNNER_TEMP/dist/privacy_cleanup_local-0.5.1.tar.gz" -C "$RUNNER_TEMP/rebuild"
+          python -m build --wheel --no-isolation --outdir "$RUNNER_TEMP/dist-rebuilt" "$RUNNER_TEMP/rebuild/privacy_cleanup_local-0.5.1"
+          cmp "$RUNNER_TEMP/dist/privacy_cleanup_local-0.5.1-py3-none-any.whl" "$RUNNER_TEMP/dist-rebuilt/privacy_cleanup_local-0.5.1-py3-none-any.whl"
+          python -m scripts.check_distribution "$RUNNER_TEMP/dist/privacy_cleanup_local-0.5.1-py3-none-any.whl"
+          python -m scripts.check_installed "$RUNNER_TEMP/dist/privacy_cleanup_local-0.5.1-py3-none-any.whl"
+          python -m scripts.check_public_tree --history
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: release-distributions
+          path: ${{ runner.temp }}/dist/*
+          retention-days: 7

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Velum · private workspace</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/private.js" defer></script>
+</head>
+<body>
+  <header id="app-header"><a class="wordmark" href="#private-app">Velum<span class="tag">SYNTHETIC PREVIEW</span></a><span class="offline"><span class="dot"></span> No broker connections</span></header>
+  <main>
+    <div id="before-start">
+    <section class="intro"><p class="eyebrow">DISPOSABLE SYNTHETIC WORKSPACE</p><h1>Draw the veil.</h1><p class="lede">Ask data brokers to delete what they’ve collected about you. Velum keeps nothing unless you choose.</p><p class="muted">This development build accepts fictional records only while its changed storage awaits review. Owner-email routes run only as an automated simulation against a local fake provider; no real broker request is sent. You complete other broker forms yourself.</p></section>
+    <details class="start-here" id="drop-guide"><summary><span>California residents: start with free DROP</span></summary><div class="drop-guidance"><p>We recommend the state's official service first for eligible residents. You complete verification and submission directly with the state.</p><a href="https://consumer.drop.privacy.ca.gov/" target="_blank" rel="noopener noreferrer">Open official DROP ↗</a><p class="muted">This external link attaches no profile information. Record an existing DROP request in History. There is no automatic DROP submission or status retrieval.</p></div></details>
+    <details class="start-here" id="user-guide"><summary>User guide · information, privacy and requests</summary><div class="drop-guidance">
+      <p>This tool helps one adult review their own listings and manage removal work. You submit broker forms yourself. Saving a profile does not start a search or authorize disclosure.</p>
+      <ol><li>Read the broker requirements before adding personal data.</li><li>Save your information once, then build your requests under Your requests. Add known listings separately and confirm each match.</li><li>Confirm a listing separately. Where preparation is supported, review the exact disclosure, approve it and begin one manual handoff.</li><li>Record what happened and the evidence. An uncertain submission must be reconciled before trying again.</li></ol>
+      <details class="history" open><summary>Should I use current or historical information?</summary>
+        <p>Use your current name, residence and an email you control for the reusable profile. An older address, former name or old contact detail can help distinguish a historical listing, but supply it only when the specific broker's instructions require it. Never invent a value to pass a form.</p>
+        <p>My information stores up to ten names, emails, addresses and phones in each category, with current/past labels. Current residence is separate from historical addresses. Preparation uses the minimum required fields from your preferred current identifiers; retired values remain in history but cannot be selected. Name parts are never guessed, and unsupported fields cannot enter a request.</p>
+        <p>Broker instructions are dated research snapshots, checked on October 7 and 8, 2026, including recorded access failures. Each route shows its own check date and review deadline; a route past its deadline pauses on its own. They are not refreshed automatically. The 30-day review window is an app policy, not proof that a form is unchanged. Demo listings are entirely fictional. Private-case observations describe what you reported on a particular date, not a current live search.</p>
+      </details>
+      <details class="history"><summary>What works now, and what is planned?</summary>
+        <p>This app currently provides a session-only workspace by default, an optional encrypted local record, case records, review and manual handoffs. For Apollo, Cognism, Lusha, ContactOut and Hunter it prepares one exact owner-email request per route. After your approval you either send it yourself from your mail app, or Velum sends it, but only to a local fake provider in this build: that is an automated simulation, not a real request. You search, submit other forms and check results yourself. There is no automatic search, follow-up or family support.</p>
+        <p>Reusable identifiers and one History timeline (emails, forms you submit and requests made elsewhere) are implemented for synthetic development. Local batch planning, per-request approvals, pause/resume and external request records are implemented. Sending to a real broker needs an independent review and a separately authorized pilot; recurring checks remain planned. No broker receives data from this build.</p>
+        <p>Session only is the default: nothing is written to disk or added to the Keychain, and everything is erased when the session ends. An encrypted record is an opt-in for tracking replies and duplicates across sessions; keeping exact request history means keeping personal information.</p>
+      </details>
+      <details class="history"><summary>What are the privacy risks?</summary>
+        <p>In a session without saving, your profile, requests and history live only in memory under a key that is never stored. In an encrypted record, they are encrypted before local database writes, and the key is kept in macOS Keychain only in a form locked by your passphrase; the passphrase itself is never stored. The data directory is outside Git. The app has no telemetry, external AI calls or broker transport. The fictional demo uses a separate store and must never contain personal information.</p>
+        <p>Risk remains. An unlocked screen, screen capture, malicious browser extension or program running under your account can expose information while the vault is unlocked. Forgetting the passphrase makes the vault unrecoverable. Browser memory, OS backups and cloud sync are not fully controlled by this app. Encryption and automated repository checks are safeguards, not an independent security audit.</p>
+        <p>Use the minimum data needed. Keep SSNs, identity documents, passwords and verification links or codes out of profiles, notes, chat, screenshots and Git. Opening an external site exposes browser/network information; typing into its form may disclose values before you press Submit.</p>
+        <p>Switching tabs, opening a broker page or checking email never ends a session. Closing or reloading this page ends a session without saving and locks an encrypted record; both also end after a period of inactivity, with a warning and a Keep working button first. Memory is not perfect erasure: your Mac can keep traces in swap files or crash reports. Losing the Keychain key or the passphrase makes records unrecoverable. Deleting local records also deletes their duplicate-prevention history; it does not erase backups or data held by brokers.</p>
+      </details>
+      <details class="history"><summary>Can I handle several brokers in one workflow?</summary>
+        <p>You can keep several broker cases in the same review queue now. Epsilon's US deletion branch is the only manual request-preparation flow. Apollo, Cognism, Lusha, ContactOut and Hunter are owner-email routes: a batch can send each approved email in turn, but only to a local fake provider in this build. Cognism, Lusha and Hunter apply only in the states their own policies name. Each email is sent from your connected sending account, and Hunter only when that account is an address you marked professional. Other entries provide guidance and tracking.</p>
+        <p>Build or refresh your requests to include available private-database drafts and existing cases. A new batch starts ready; nothing is sent until you approve each request and press Send. Review a separate destination, purpose and exact field set for each. Pause sending controls new sends and handoffs; it cannot cancel an already opened page. Each request needs its own approval, verification, receipt and status. A changed request loses its approval; an uncertain attempt stays blocked against retry. One broker's response never marks the rest complete.</p>
+        <p>For several old physical addresses, add entries labeled past in My information and mark a preferred current address for routes that require it. Historical-address request mapping awaits a route-specific contract. If you mean several people, family assistance is not implemented. California residents should consider the free DROP link above for its separate state-operated multi-broker process.</p>
+      </details>
+      <details class="history"><summary>What do the statuses actually prove?</summary>
+        <p>A candidate needs a match decision. A prepared draft has only passed local checks. For a manual route, approval permits one manual handoff. For an owner-email route, it permits sending that one exact email once, simulated in this build; your mail provider accepting it is not the broker's acknowledgment. Submission and broker responses are your dated reports. A deletion statement is separate from observing an exact listing absent. A failed, blocked or ambiguous check means unknown; no status means permanent erasure from the internet.</p>
+      </details>
+    </div></details>
+    <details class="start-here" id="requirements-panel"><summary>Broker requirements · before you share information</summary><div class="drop-guidance" id="broker-requirements"><p>Loading the local requirements guide…</p></div></details>
+    </div>
+    <div id="private-idle" role="alert" hidden></div>
+    <div id="private-error" role="alert" hidden></div>
+    <p id="private-message" role="status"></p>
+    <div id="private-app"><p>Opening the local workspace…</p></div>
+    <footer>Personal records belong outside Git. This application sends no profile data to brokers, analytics or AI services.<br>Encryption protects stored records; it cannot protect against a compromised Mac or malicious browser extension.</footer>
+  </main>
+</body>
+</html>

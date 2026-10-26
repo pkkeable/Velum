@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools==84.1.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "privacy-cleanup-local"
+version = "0.5.1"
+description = "Velum: local privacy cleanup with reusable identity, encrypted history and reviewed manual handoffs"
+requires-python = ">=3.9"
+license = "MIT"
+
+[project.optional-dependencies]
+private = ["cryptography==50.0.1; python_version >= '3.12'", "keyring==25.7.0; python_version >= '3.12' and sys_platform == 'darwin'"]
+
+[project.scripts]
+velum = "privacy_cleanup.__main__:main"
+privacy-cleanup = "privacy_cleanup.__main__:main"
+
+[project.urls]
+Repository = "https://github.com/pkkeable/Velum"
+
+[tool.setuptools]
+packages = ["privacy_cleanup", "privacy_cleanup.adapters", "privacy_cleanup.fixtures"]
+include-package-data = false
+
+[tool.setuptools.package-dir]
+"privacy_cleanup.fixtures" = "fixtures"
+
+[tool.setuptools.package-data]
+privacy_cleanup = ["THIRD_PARTY.md", "static/*.html", "static/*.css", "static/*.js", "static/fonts/*"]
+"privacy_cleanup.fixtures" = ["demo.json", "brokers.json", "manifest.sha256"]
