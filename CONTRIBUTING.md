@@ -17,3 +17,16 @@ Use a GitHub noreply commit identity. Keep author and committer metadata free of
 private addresses. Do not rewrite existing attribution. New PRs need passing CI;
 changes to storage, approvals, credentials, transport or recovery need a focused
 boundary review and regression evidence. Keep plans separate from implemented behavior.
+
+## Commit privacy
+
+Before creating a pull request, enable GitHub's **Keep my email addresses private**
+and **Block command line pushes that expose my email** in
+[Settings → Emails](https://github.com/settings/emails). Configure the local Git
+identity with the no-reply address shown there. Local Git configuration alone does
+not control the temporary merge commits GitHub creates for pull requests.
+
+For a new public repository, verify a pull request's head and generated merge
+commit attribution while the repository is still private. Any unexpected email
+is a publication blocker. The release check intentionally examines reachable
+author and committer metadata, including GitHub-generated merge commits in PR CI.

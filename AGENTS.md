@@ -18,3 +18,5 @@
 - Run make test, make demo and make check after relevant changes.
 - Independent review is not replaced by implementation tests or a second model's agreement.
 - Publication and any future identity transmission require explicit authorization.
+
+- Before public PR creation, verify account-level email privacy as well as local no-reply Git identity. Test GitHub-generated PR merge attribution while private; unexpected email metadata blocks publication.
