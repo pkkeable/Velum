@@ -1,20 +1,24 @@
 # Velum
 
-[![Synthetic checks](https://github.com/pkkeable/Velum/actions/workflows/check.yml/badge.svg)](https://github.com/pkkeable/Velum/actions/workflows/check.yml)
+People whose contact details appear on data-broker sites face a fragmented removal
+process. Each request can disclose more information, and a sent message does not
+establish that a listing is gone.
 
-**Enter once. Review every request. Keep the evidence.**
+Velum turns one identity into individually reviewed requests and a record of what
+happened. The local workflow is implemented and exercised with fictional records;
+[automated checks](https://github.com/pkkeable/Velum/actions/workflows/check.yml) back up specific claims.
 
-Velum is a local privacy-request workflow that turns one reusable identity into
-individually approved requests and a durable record of what happened. It demonstrates
-how to automate sensitive work without treating a timeout as success or an approval
-as permission to send something different.
+<a href="https://github.com/pkkeable/Velum/releases/download/v0.5.1/velum-demo.png"><img src="https://github.com/pkkeable/Velum/releases/download/v0.5.1/velum-demo.png" alt="Velum's local demo using the bundled fictional Avery Example identity" width="480"></a>
 
-> **Technical preview · 0.5.1 · synthetic data only.** Local identity, approval,
-> history and encrypted recovery features are implemented. Broker sending uses a
-> local fake provider. No broker removal or real-data safety claim is made.
-> Gmail is restricted to self-tests; connecting a real account is unnecessary.
+> **What's real and what's simulated · technical preview 0.5.2**
+> Reviewing requests and keeping history work locally. Sending to brokers is simulated,
+> and Gmail sending is limited to test messages to yourself. No real personal data has
+> been used. Tested on macOS in limited scenarios; full acceptance results are attached
+> to each release.
 
-### Try the fictional demo
+**[Read the case study: decisions, tradeoffs and scope cuts →](docs/CASE_STUDY.md)**
+
+## Try the fictional demo
 
 Python 3.9+ on macOS or Linux. No dependencies or accounts:
 
@@ -26,56 +30,40 @@ python3 -m privacy_cleanup
 
 Open **http://127.0.0.1:8765**. Stop with Ctrl+C. The demo accepts only bundled
 fictional records. If the port is occupied, add `--port 8875` and open that port.
-The macOS encrypted workspace is a separate walkthrough below.
 
-![Velum fictional demo](https://github.com/pkkeable/Velum/releases/download/v0.5.1/velum-demo.png)
+The quick demo shows how to review a listing and decide what request to make.
+The shared-identity workflow described in the case study is a separate **macOS
+workspace**: follow the [walkthrough](docs/WALKTHROUGH.md) to try it with fictional
+data and simulated sending. No email account is needed.
 
-## What to look at
+**Under a minute from clone to running demo (macOS test, Oct 26).**
 
-| Product behavior | Engineering decision |
-| --- | --- |
-| One identity feeds qualifying routes | Typed identifiers, per-route eligibility and minimum-field mapping |
-| Review sender, recipient and exact message | Approval fingerprint binds the disclosure; edits invalidate unused approvals |
-| Interrupted sending stays uncertain | Attempt reserved before dispatch; no automatic retry after ambiguous outcomes |
-| History survives profile changes | Stored request snapshots rather than reconstruction from the latest identity |
-| Keep nothing by default; explicitly opt into saved records | Separate in-memory and encrypted SQLite stores |
-| Restore without silently repeating requests | Fresh keys, no exported OAuth grant, paused queues and reconciliation gate |
+Preliminary builder run on macOS 27.0.1 with Python 3.9.6 already installed,
+measured from starting an anonymous clone to seeing Avery Example in the browser.
+It used published baseline
+[`bd6cfe0`](https://github.com/pkkeable/Velum/tree/bd6cfe0298881fcd7e7f907d2c9dfb680ee8bdd6)
+and an explicit disposable `--data-dir`. The clean Linux check against the frozen
+final candidate remains pending.
 
-**For technical reviewers:** [architecture](docs/ARCHITECTURE.md),
-[threat model and non-goals](docs/THREAT_MODEL.md),
-[claim-to-test map](docs/SECURITY_VALIDATION.md), and
-[release reproduction](docs/RELEASE.md).
+## For technical reviewers
 
-## What works, and what remains unverified
+- [Architecture and decisions](docs/ARCHITECTURE.md)
+- [Threat model and non-goals](docs/THREAT_MODEL.md)
+- [Security claims and their tests](docs/SECURITY_VALIDATION.md)
+- [Encrypted recovery and its limits](docs/RECOVERY.md)
+- [Workspace walkthrough and native acceptance](docs/WALKTHROUGH.md)
+- [Release reproduction and validation limits](docs/RELEASE.md)
+- [Product case study](docs/CASE_STUDY.md)
 
-| Capability | Evidence level |
-| --- | --- |
-| Shared identity, exact approvals, attention queue and masked history | Implemented and exercised with synthetic records |
-| Apollo, Cognism, Lusha, ContactOut and Hunter email contracts | Automated simulation only; eligibility and unresolved scope differ by route |
-| Epsilon request preparation and other broker guidance | Local/manual workflow; no live acceptance claim |
-| California DROP | Official user-opened resource; no integration or identity transfer |
-| Encrypted records and portable backup/restore | Implemented; see native-test limits in the release record |
-| Gmail connection | Send-only implementation; broker sending refused; fake-Google tests |
-| Broker replies and listing observations | Dated user reports, not independent verification |
-| Discovery, scheduled checks, hosted sync and family assistance | Planned, not implemented |
-
+The [coverage register](docs/COVERAGE.md) distinguishes simulated email routes,
+manual handoffs and official user-opened resources, including California DROP.
+Eligibility varies by route; expired evidence pauses a route until reviewed.
 A provider accepting a message is not a broker acknowledgment or proof of deletion.
-Route evidence has a 30-day review window; expired routes pause until reviewed.
-The [coverage register](docs/COVERAGE.md) records the limits. This preview is not a
-maintained removal service.
+This preview is not a maintained removal service.
 
-## Run the current workflow
-
-The dependency-free demo illustrates listing decisions. The newer shared-identity,
-five-route simulation and privacy modes run in the **macOS synthetic workspace**.
-Follow the complete [walkthrough](docs/WALKTHROUGH.md). Use fictional data only.
-No email account is needed; the fake provider stays on loopback.
-
-![Exact-email review in the synthetic workspace](https://github.com/pkkeable/Velum/releases/download/v0.5.1/velum-workspace.png)
-
-The product is called **Velum**; its distribution is `privacy-cleanup-local`, its
-module is `privacy_cleanup`, and both `velum` and `privacy-cleanup` commands are
-supported. These compatibility identifiers do not move or migrate existing data.
+The product is **Velum**; its distribution is `privacy-cleanup-local`, its module is
+`privacy_cleanup`, and both `velum` and `privacy-cleanup` commands are supported.
+These compatibility identifiers do not move or migrate existing data.
 
 ## Validate and contribute
 
@@ -95,13 +83,13 @@ lanes where encrypted-module skips are expected. See [CONTRIBUTING.md](CONTRIBUT
 The maintainer defined the product, privacy boundaries, acceptance criteria and
 release decisions. Claude Code and Codex assisted with implementation, testing,
 review and release preparation. **AI-authored and AI-reviewed; not independently
-security-audited.** Automated tests and reproducible builds are evidence of specific
-behaviors, not proof of general security or real broker effectiveness.
+security-audited.** Tests establish specific behaviors; they do not establish
+general security or real broker effectiveness.
 
-This repository is a reviewed source export from private development. Its
-[development history](docs/HISTORY.md) explains the increments and their limits.
-The [roadmap](docs/ROADMAP.md) keeps real-world use behind separate review and pilot
-gates. Report vulnerabilities privately through [SECURITY.md](SECURITY.md).
+The [development history](docs/HISTORY.md) describes the private development behind
+this reviewed source export. The [roadmap](docs/ROADMAP.md) keeps real-world use
+behind separate review and pilot gates. Report vulnerabilities privately through
+[SECURITY.md](SECURITY.md).
 
 MIT license. EB Garamond is distributed under the SIL Open Font License; see
 [third-party notices](privacy_cleanup/THIRD_PARTY.md).

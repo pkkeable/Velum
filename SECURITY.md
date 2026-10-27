@@ -1,11 +1,14 @@
 # Security policy
 
-Supported preview: **0.5.1**. Use synthetic records only.
+Supported preview: **0.5.2**. Use synthetic records only.
 
 **AI-authored and AI-reviewed; not independently security-audited.** Earlier focused
 reviews do not certify this release. Real-data use, account connection and broker
 sending require separate boundary review and authorization. No live removal claim
 is made. See the [review scope](docs/SECURITY_REVIEW.md).
+
+Native validation status: **narrow native checks run; owner acceptance pending**.
+See the [native acceptance procedure](docs/WALKTHROUGH.md#native-macos-acceptance).
 
 ## Reporting a vulnerability
 

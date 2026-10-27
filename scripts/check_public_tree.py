@@ -22,9 +22,10 @@ PUBLIC_FILES = {
     'README.md',
     'SECURITY.md',
     'docs/ARCHITECTURE.md',
+    'docs/CASE_STUDY.md',
     'docs/COVERAGE.md',
     'docs/HISTORY.md',
-    'docs/MAC_ACCEPTANCE.md',
+    'docs/MAC_ACCEPTANCE.md',  # Retained for scanning published history; content is now in WALKTHROUGH.
     'docs/PRODUCT_SCOPE.md',
     'docs/RECOVERY.md',
     'docs/RELEASE.md',
@@ -119,7 +120,7 @@ PATTERNS = [
     re.compile(rb"-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----"),
     re.compile(rb"\b(?:ghp|github_pat)_[A-Za-z0-9_]{20,}\b"),
     re.compile(rb"\bAKIA[A-Z0-9]{16}\b"),
-    re.compile(rb"(?:/Users/|/home/)[A-Za-z][A-Za-z0-9._-]+/"),
+    re.compile(rb"(?:/" + rb"Users/|/home/)[A-Za-z][A-Za-z0-9._-]+/"),
 ]
 
 

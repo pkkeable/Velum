@@ -11,6 +11,15 @@ from urllib.parse import unquote
 ROOT = Path(__file__).resolve().parent.parent
 
 
+def document_versions(name, text):
+    # The owner-approved demo image is unchanged and remains on its published tag.
+    # Exempt only this exact URL in the README, never surrounding version claims.
+    if name == 'README.md':
+        asset = 'https://github.com/pkkeable/Velum/releases/download/v0.5.1/velum-demo.png'
+        text = re.sub(re.escape(asset) + r'(?=$|[\s"<>)])', '', text)
+    return re.findall(r'(?<![\d.])0\.\d+\.\d+(?:a\d+|rc\d+)?\b', text)
+
+
 def main():
     failures = []
     project = (ROOT / 'pyproject.toml').read_text()
@@ -20,7 +29,7 @@ def main():
         failures.append('package and project versions differ')
     for name in ('README.md', 'SECURITY.md', 'docs/RELEASE.md'):
         text = (ROOT / name).read_text()
-        versions = re.findall(r'(?<![\d.])0\.\d+\.\d+(?:a\d+|rc\d+)?\b', text)
+        versions = document_versions(name, text)
         if not versions or any(v != version for v in versions):
             failures.append('release version documentation differs: ' + name)
     for path in ROOT.rglob('*.md'):

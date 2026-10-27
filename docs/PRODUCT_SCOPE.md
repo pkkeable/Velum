@@ -1,9 +1,11 @@
 # Product scope
 
-Velum's intended product lets one adult enter identifiers once, approve each exact
-request, execute supported submissions and retain trustworthy dated outcomes.
-This public technical preview implements that workflow with synthetic records and
-a local fake sender. It does not complete the live-submission product milestone.
+Release direction, October 26, 2026: Velum is a portfolio technical preview of a
+local privacy-request workflow. One adult enters identifiers once, approves each
+exact request and retains dated outcomes. This release demonstrates that workflow
+with synthetic records and a local fake sender; real submissions and a real-data
+pilot are outside its completion criteria. The proposed live-submission product
+remains separately gated in [ROADMAP.md](ROADMAP.md).
 
 ## Current release
 

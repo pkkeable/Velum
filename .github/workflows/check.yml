@@ -74,11 +74,11 @@ jobs:
           mkdir "$RUNNER_TEMP/source" "$RUNNER_TEMP/rebuild" "$RUNNER_TEMP/dist" "$RUNNER_TEMP/dist-rebuilt"
           git archive HEAD | tar -x -C "$RUNNER_TEMP/source"
           python -m build --no-isolation --outdir "$RUNNER_TEMP/dist" "$RUNNER_TEMP/source"
-          tar -xzf "$RUNNER_TEMP/dist/privacy_cleanup_local-0.5.1.tar.gz" -C "$RUNNER_TEMP/rebuild"
-          python -m build --wheel --no-isolation --outdir "$RUNNER_TEMP/dist-rebuilt" "$RUNNER_TEMP/rebuild/privacy_cleanup_local-0.5.1"
-          cmp "$RUNNER_TEMP/dist/privacy_cleanup_local-0.5.1-py3-none-any.whl" "$RUNNER_TEMP/dist-rebuilt/privacy_cleanup_local-0.5.1-py3-none-any.whl"
-          python -m scripts.check_distribution "$RUNNER_TEMP/dist/privacy_cleanup_local-0.5.1-py3-none-any.whl"
-          python -m scripts.check_installed "$RUNNER_TEMP/dist/privacy_cleanup_local-0.5.1-py3-none-any.whl"
+          tar -xzf "$RUNNER_TEMP/dist/privacy_cleanup_local-0.5.2.tar.gz" -C "$RUNNER_TEMP/rebuild"
+          python -m build --wheel --no-isolation --outdir "$RUNNER_TEMP/dist-rebuilt" "$RUNNER_TEMP/rebuild/privacy_cleanup_local-0.5.2"
+          cmp "$RUNNER_TEMP/dist/privacy_cleanup_local-0.5.2-py3-none-any.whl" "$RUNNER_TEMP/dist-rebuilt/privacy_cleanup_local-0.5.2-py3-none-any.whl"
+          python -m scripts.check_distribution "$RUNNER_TEMP/dist/privacy_cleanup_local-0.5.2-py3-none-any.whl"
+          python -m scripts.check_installed "$RUNNER_TEMP/dist/privacy_cleanup_local-0.5.2-py3-none-any.whl"
           python -m scripts.check_public_tree --history
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:

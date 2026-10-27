@@ -85,6 +85,23 @@ class PublicTreeTests(unittest.TestCase):
             files = safe_files(); files["README.md"] = data
             self.assertTrue(audit(files))
 
+    def test_home_paths_are_detected_without_echoing_them(self):
+        for data in (b"/" + b"Users/Example/record.txt", b"/home/" + b"example/record.txt"):
+            files = safe_files(); files["README.md"] = data
+            errors = audit(files)
+            self.assertIn("possible sensitive content (match withheld)", errors)
+            self.assertNotIn(data.decode(), " ".join(errors))
+
+    def test_reused_demo_image_does_not_hide_stale_version_claims(self):
+        from scripts.check_release import document_versions
+        url = 'https://github.com/pkkeable/Velum/releases/download/v0.5.1/velum-demo.png'
+        self.assertEqual(document_versions('README.md', 'Preview 0.5.2 ' + url), ['0.5.2'])
+        self.assertEqual(document_versions('README.md', 'Preview 0.5.1 ' + url), ['0.5.1'])
+        self.assertEqual(document_versions('README.md', url.replace('velum-demo', 'another-image')), ['0.5.1'])
+        self.assertEqual(document_versions('SECURITY.md', url), ['0.5.1'])
+        self.assertEqual(document_versions('README.md', url + '.extra'), ['0.5.1'])
+        self.assertEqual(document_versions('README.md', url + '?raw=1'), ['0.5.1'])
+
     def test_unknown_path_and_binary_rejected(self):
         for name, data in (("profile.txt", b"private"), ("README.md", b"\0")):
             files = safe_files(); files[name] = data
