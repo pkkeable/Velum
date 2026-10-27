@@ -10,7 +10,7 @@ requires-python = ">=3.9"
 license = "MIT"
 
 [project.optional-dependencies]
-private = ["cryptography==50.0.1; python_version >= '3.12'", "keyring==25.7.0; python_version >= '3.12' and sys_platform == 'darwin'"]
+private = ["cryptography==50.0.2; python_version >= '3.12'", "keyring==25.7.0; python_version >= '3.12' and sys_platform == 'darwin'"]
 
 [project.scripts]
 velum = "privacy_cleanup.__main__:main"

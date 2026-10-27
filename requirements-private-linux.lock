@@ -1,7 +1,7 @@
 # Encrypted-storage CI dependencies: CPython 3.12 / Linux x86_64, glibc >= 2.34.
-# Wheel SHA-256 values checked against official PyPI metadata on 2026-10-07.
+# Wheel SHA-256 values checked against official PyPI metadata on 2026-10-26.
 # Install with pip --require-hashes --only-binary=:all: -r requirements-private-linux.lock.
 # Native macOS Keychain dependencies remain in requirements-private.lock.
-cryptography==50.0.1 --hash=sha256:51afcfceb15597cf2635068e4ac9a56b2abde622edde17f37d85fd7b5306497a
+cryptography==50.0.2 --hash=sha256:1981f1db4630889b9ef7803fadef12b056f428cb6b85c27ba57b774793b6093c
 cffi==2.1.1 --hash=sha256:c1453022f490d2459a11819d83ad1d586e9ff65a12ac3e705ffebd46d3685dcf
 pycparser==3.0 --hash=sha256:b727414169a36b7d524c1c3e31839a521725078d7b2ff038656844266160a992

@@ -11,7 +11,7 @@ Retain their original distribution notices when redistributing their wheels:
 
 | Dependency | Pinned version | Upstream license |
 | --- | --- | --- |
-| cryptography | 50.0.1 | Apache-2.0 OR BSD-3-Clause; bundled native components have additional notices in its wheel |
+| cryptography | 50.0.2 | Apache-2.0 OR BSD-3-Clause; bundled native components have additional notices in its wheel |
 | cffi | 2.1.1 | MIT-0 |
 | pycparser | 3.0 | BSD-3-Clause |
 | keyring | 25.7.0 | MIT |
