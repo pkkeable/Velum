@@ -20,7 +20,7 @@ Retain their original distribution notices when redistributing their wheels:
 | jaraco.functools | 4.6.0 | MIT |
 | more-itertools | 11.1.0 | MIT |
 
-Build backend: setuptools 84.0.0 (MIT). Version-specific provenance and advisory
+Build backend: setuptools 84.1.0 (MIT). Version-specific provenance and advisory
 metadata: https://pypi.org/pypi/NAME/VERSION/json. Hashes for the supported native
 wheels remain in the two requirements-private lock files. Checked 2026-10-17;
 absence of a listed advisory is not proof of absence of vulnerabilities.
