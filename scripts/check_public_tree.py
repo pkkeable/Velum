@@ -117,7 +117,7 @@ PATTERNS = [
     re.compile(rb"consulting " + rb"colors|privacy-cleanup-python312" + rb"-venv", re.I),
     re.compile(rb"pkkeable/" + rb"privacy-cleanup", re.I),
     re.compile(rb"\b\d{3}-\d{2}-\d{4}\b"),
-    re.compile(rb"-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----"),
+    re.compile(rb"-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE " + rb"KEY-----"),
     re.compile(rb"\b(?:ghp|github_pat)_[A-Za-z0-9_]{20,}\b"),
     re.compile(rb"\bAKIA[A-Z0-9]{16}\b"),
     re.compile(rb"(?:/" + rb"Users/|/home/)[A-Za-z][A-Za-z0-9._-]+/"),

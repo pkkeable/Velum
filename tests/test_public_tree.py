@@ -81,7 +81,7 @@ class PublicTreeTests(unittest.TestCase):
             self.assertIn("non-example email (match withheld)", audit(files), name)
 
     def test_identifier_and_private_key_patterns(self):
-        for data in (b"123" + b"-45-" + b"6789", b"-----BEGIN " + b"PRIVATE KEY-----"):
+        for data in (b"123" + b"-45-" + b"6789", b"-----BEGIN " + b"PRIVATE " + b"KEY-----"):
             files = safe_files(); files["README.md"] = data
             self.assertTrue(audit(files))
 

@@ -38,9 +38,9 @@ data and simulated sending. No email account is needed.
 
 **Under a minute from clone to running demo (macOS test, Oct 26).**
 
-Preliminary builder run on macOS with Python already installed, measured from
-starting an anonymous clone to seeing the demo in the browser. Clean-machine
-acceptance results are attached to each release.
+Builder run on macOS 27.0.1 with Python 3.9.6, and QA run on clean Debian 13 with
+Python 3.13.5, each measured from starting an anonymous clone to seeing the demo
+in the browser. Acceptance results are attached to each release.
 
 ## For technical reviewers
 
