@@ -22,5 +22,5 @@ Retain their original distribution notices when redistributing their wheels:
 
 Build backend: setuptools 84.1.0 (MIT). Version-specific provenance and advisory
 metadata: https://pypi.org/pypi/NAME/VERSION/json. Hashes for the supported native
-wheels remain in the two requirements-private lock files. Checked 2026-10-17;
+wheels remain in the two requirements-private lock files. Checked 2026-10-26;
 absence of a listed advisory is not proof of absence of vulnerabilities.

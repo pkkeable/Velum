@@ -4,7 +4,7 @@ Read [AGENTS.md](AGENTS.md), [scope](docs/PRODUCT_SCOPE.md) and the
 [threat model](docs/THREAT_MODEL.md). Submit minimal synthetic reproductions only.
 Do not attach runtime databases, screenshots, logs, credentials or real listing URLs.
 
-Use Python 3.12+ with the appropriate hash-locked dependencies for encrypted tests;
+Use Python 3.12 on an Apple-silicon Mac with the appropriate hash-locked dependencies for encrypted tests;
 Node is needed for UI handler tests. Keep virtual environments and build output
 outside the checkout. See [release setup](docs/RELEASE.md).
 

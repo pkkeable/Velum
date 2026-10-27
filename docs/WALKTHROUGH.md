@@ -10,7 +10,7 @@ This older fixture-driven demo is separate from the shared-identity workspace.
 
 ## Current macOS workspace
 
-Requires Python 3.12+ on macOS. These commands install only hash-locked dependencies
+Requires Python 3.12 on an Apple-silicon Mac. These commands install only hash-locked dependencies
 in an isolated temporary environment.
 
 Run this block in one terminal from the repository root. The subshell stops its

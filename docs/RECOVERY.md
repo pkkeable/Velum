@@ -58,8 +58,8 @@ not backed up; explicitly save it to an encrypted record first if retention is w
 
 ## Explicit CLI workflow
 
-Use the installed `velum` or compatibility `privacy-cleanup` command on macOS with
-Python 3.12+ and the pinned native dependencies. Stop the running app first; the
+Use the installed `velum` or compatibility `privacy-cleanup` command on an Apple-silicon Mac with
+Python 3.12 and the pinned native dependencies. Stop the running app first; the
 exclusive vault lock refuses concurrent CLI access. Passphrases are prompted via
 getpass, never command-line arguments, browser storage, logs or environment values.
 Ctrl+C/EOF cancels; error messages do not print identity fields or secret values.
