@@ -38,12 +38,9 @@ data and simulated sending. No email account is needed.
 
 **Under a minute from clone to running demo (macOS test, Oct 26).**
 
-Preliminary builder run on macOS 27.0.1 with Python 3.9.6 already installed,
-measured from starting an anonymous clone to seeing Avery Example in the browser.
-It used published baseline
-[`bd6cfe0`](https://github.com/pkkeable/Velum/tree/bd6cfe0298881fcd7e7f907d2c9dfb680ee8bdd6)
-and an explicit disposable `--data-dir`. The clean Linux check against the frozen
-final candidate remains pending.
+Preliminary builder run on macOS with Python already installed, measured from
+starting an anonymous clone to seeing the demo in the browser. Clean-machine
+acceptance results are attached to each release.
 
 ## For technical reviewers
 
